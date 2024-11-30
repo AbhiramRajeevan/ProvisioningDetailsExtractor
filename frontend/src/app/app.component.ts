@@ -124,7 +124,7 @@ export class AppComponent {
     formData.append('file', this.selectedFile, this.selectedFile.name);
 
     // Send file to Go server
-    this.http.post('http://localhost:8080/upload', formData).subscribe(
+    this.http.post('https://provisioningdetailsextractor.onrender.com/upload', formData).subscribe(
       (response) => {
         console.log('File uploaded successfully', response);
         this.responseData = response;
