@@ -1,0 +1,13 @@
+<form #uploadForm="ngForm" (ngSubmit)="onSubmit()">
+  <input type="file" (change)="onFileChange($event)" accept=".ppkg"/>
+  <button type="submit" [disabled]="!selectedFile">Upload</button>
+</form>
+
+<div *ngIf="responseData">
+  <h3>Response from Server:</h3>
+  <pre>{{ responseData | json }}</pre>
+
+  <h3>AppSettings:</h3>
+  <pre>{{ getSimulatorData() | json }}</pre>
+  <button (click)="copyToClipboard(getSimulatorData())">Copy AppSettings</button>
+</div>
