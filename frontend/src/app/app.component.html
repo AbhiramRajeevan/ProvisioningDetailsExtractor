@@ -2,9 +2,9 @@
   <input type="file" (change)="onFileChange($event)" accept=".ppkg" />
 </form> -->
 
-<div style="font-family: 'Arial', serif;">
+<div style="font-family: 'Arial', serif">
   <h1 class="title">Provisioning Details Extractor</h1>
-<hr>
+  <hr />
   <div class="grid-item1" *ngIf="!responseData">
     <form class="form" (ngSubmit)="onSubmit()">
       <span class="form-title">Upload your PPKG file</span>
@@ -12,28 +12,37 @@
         <span class="drop-title">Drop file here</span>
         or
         <input
-        type="file"
-        (change)="onFileChange($event)"
-        accept=".ppkg"
-        id="file-input"
+          type="file"
+          (change)="onFileChange($event)"
+          accept=".ppkg"
+          id="file-input"
         />
       </label>
-      <button style="margin-top: 5%;" type="submit" [disabled]="!selectedFile">Upload</button>
+      <button style="margin-top: 5%" type="submit" [disabled]="!selectedFile">
+        Upload
+      </button>
     </form>
   </div>
 
-
-<div *ngIf="responseData" class="data">
-  <h3>AppSettings:</h3>
-  <button (click)="copyToClipboard(getSimulatorData())">
-    Copy AppSettings
-  </button>
-  <button (click)="resetData()">
-    Generate Again
-  </button>
-  <div class="overflow-text" style="border: 5px solid greenyellow; padding: 10px;border-radius: 10px; background-color: #202124; color: white; font-size: 1rem;">
-    <pre>{{ getSimulatorData() | json }}</pre>
+  <div *ngIf="responseData" class="data">
+    <h3>AppSettings:</h3>
+    <button (click)="copyToClipboard(getSimulatorData())">
+      Copy AppSettings
+    </button>
+    <button (click)="resetData()">Generate Again</button>
+    <button type="button" (click)="downloadJson()">Download JSON</button>
+    <div
+      class="overflow-text"
+      style="
+        border: 5px solid greenyellow;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #202124;
+        color: white;
+        font-size: 1rem;
+      "
+    >
+      <pre>{{ getSimulatorData() | json }}</pre>
+    </div>
   </div>
-  
-</div>
 </div>

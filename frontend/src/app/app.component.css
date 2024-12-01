@@ -1,33 +1,32 @@
-
-  .overflow-text {
+.overflow-text {
     width: 98%;
     height: 100%;
-    overflow-x: hidden; 
-}   
-  .overflow-text pre {
-    white-space: pre-wrap;       
-    word-wrap: break-word;       
-    overflow: hidden;            
-  }
+    overflow-x: hidden;
+}
 
-  .grid-container {
-    display: grid;               /* Turn the container into a grid */
-    justify-items: center;       /* Center child elements horizontally */
-  }
+.overflow-text pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
 
-  .data{
-    margin: 1px red ;
-  }
-  
-  .grid-item1 {
-    width: 45%;   
-    height: 10%;          /* Set width of the grid item */
-    margin-left: auto;      /* Center it horizontally */
-    margin-right: auto;     /* Center it horizontally */
-    text-align: center;     /* Ensure content is centered inside */
-  }
+.data {
+    margin: 1px red;
+}
 
-.title{
+.grid-item1 {
+    width: 45%;
+    height: 10%;
+    /* Set width of the grid item */
+    margin-left: auto;
+    /* Center it horizontally */
+    margin-right: auto;
+    /* Center it horizontally */
+    text-align: center;
+    /* Ensure content is centered inside */
+}
+
+.title {
     text-align: center;
 }
 
@@ -40,21 +39,21 @@
     text-align: center;
     height: 1%;
     font-size: 1rem;
-  }
-  
-  .form-title {
+}
+
+.form-title {
     color: #000000;
     font-size: 1.8rem;
     font-weight: 500;
-  }
-  
-  .form-paragraph {
+}
+
+.form-paragraph {
     margin-top: 10px;
     font-size: 0.9375rem;
     color: rgb(105, 105, 105);
-  }
-  
-  .drop-container {
+}
+
+.drop-container {
     background-color: #fff;
     position: relative;
     display: flex;
@@ -69,26 +68,26 @@
     color: #444;
     cursor: pointer;
     transition: background .2s ease-in-out, border .2s ease-in-out;
-  }
-  
-  .drop-container:hover {
+}
+
+.drop-container:hover {
     background: rgba(0, 140, 255, 0.164);
     border-color: rgba(17, 17, 17, 0.616);
-  }
-  
-  .drop-container:hover .drop-title {
+}
+
+.drop-container:hover .drop-title {
     color: #222;
-  }
-  
-  .drop-title {
+}
+
+.drop-title {
     color: #444;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     transition: color .2s ease-in-out;
-  }
-  
-  #file-input {
+}
+
+#file-input {
     width: 350px;
     max-width: 100%;
     color: #444;
@@ -96,9 +95,9 @@
     background: #fff;
     border-radius: 10px;
     border: 1px solid rgba(8, 8, 8, 0.288);
-  }
-  
-  #file-input::file-selector-button {
+}
+
+#file-input::file-selector-button {
     margin-right: 20px;
     border: none;
     background: #084cdf;
@@ -107,8 +106,8 @@
     color: #fff;
     cursor: pointer;
     transition: background .2s ease-in-out;
-  }
-  
-  #file-input::file-selector-button:hover {
+}
+
+#file-input::file-selector-button:hover {
     background: #0d45a5;
-  }
+}
