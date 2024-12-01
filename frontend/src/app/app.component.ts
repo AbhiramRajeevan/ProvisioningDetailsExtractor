@@ -145,4 +145,8 @@ export class AppComponent {
     document.body.removeChild(textarea);
     alert('Content copied to clipboard!');
   }
+
+  resetData() : void {
+    this.responseData = null
+  }
 }

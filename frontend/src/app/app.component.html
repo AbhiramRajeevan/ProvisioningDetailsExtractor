@@ -1,13 +1,39 @@
-<form #uploadForm="ngForm" (ngSubmit)="onSubmit()">
-  <input type="file" (change)="onFileChange($event)" accept=".ppkg"/>
-  <button type="submit" [disabled]="!selectedFile">Upload</button>
-</form>
+<!-- <form #uploadForm="ngForm" (ngSubmit)="onSubmit()">
+  <input type="file" (change)="onFileChange($event)" accept=".ppkg" />
+</form> -->
 
-<div *ngIf="responseData">
-  <h3>Response from Server:</h3>
-  <pre>{{ responseData | json }}</pre>
+<div style="font-family: 'Arial', serif;">
+  <h1 class="title">Provisioning Details Extractor</h1>
+<hr>
+  <div class="grid-item1" *ngIf="!responseData">
+    <form class="form" (ngSubmit)="onSubmit()">
+      <span class="form-title">Upload your PPKG file</span>
+      <label for="file-input" class="drop-container">
+        <span class="drop-title">Drop file here</span>
+        or
+        <input
+        type="file"
+        (change)="onFileChange($event)"
+        accept=".ppkg"
+        id="file-input"
+        />
+      </label>
+      <button style="margin-top: 5%;" type="submit" [disabled]="!selectedFile">Upload</button>
+    </form>
+  </div>
 
+
+<div *ngIf="responseData" class="data">
   <h3>AppSettings:</h3>
-  <pre>{{ getSimulatorData() | json }}</pre>
-  <button (click)="copyToClipboard(getSimulatorData())">Copy AppSettings</button>
+  <button (click)="copyToClipboard(getSimulatorData())">
+    Copy AppSettings
+  </button>
+  <button (click)="resetData()">
+    Generate Again
+  </button>
+  <div class="overflow-text" style="border: 5px solid greenyellow; padding: 10px;border-radius: 10px; background-color: #202124; color: white; font-size: 1rem;">
+    <pre>{{ getSimulatorData() | json }}</pre>
+  </div>
+  
+</div>
 </div>
