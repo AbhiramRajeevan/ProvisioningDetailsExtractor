@@ -1,15 +1,3 @@
-.overflow-text {
-    width: 98%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-.overflow-text pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: hidden;
-}
-
 .data {
     margin: 1px red;
 }
@@ -17,13 +5,9 @@
 .grid-item1 {
     width: 45%;
     height: 10%;
-    /* Set width of the grid item */
     margin-left: auto;
-    /* Center it horizontally */
     margin-right: auto;
-    /* Center it horizontally */
     text-align: center;
-    /* Ensure content is centered inside */
 }
 
 .title {
@@ -110,4 +94,23 @@
 
 #file-input::file-selector-button:hover {
     background: #0d45a5;
+}
+
+.sim-data {
+    border: 5px solid greenyellow;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #202124;
+    color: white;
+    font-size: 1rem;
+}
+
+.buttons {
+    color: white;
+    background-color: #008CBA;
+    padding: 12px 28px;
+    border-color: white;
+    border-radius: 8px;
+    margin-left: 3px;
+    margin-bottom: 3px;
 }
