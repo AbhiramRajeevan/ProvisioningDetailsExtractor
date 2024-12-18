@@ -127,9 +127,10 @@
     margin-bottom: 3px;
 }
 
+
 .footer {
     text-align: center;
-    padding: 1% 0 1% 0;
+    width: 100%;
 }
 
 .footer a {
@@ -139,4 +140,9 @@
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
 }
