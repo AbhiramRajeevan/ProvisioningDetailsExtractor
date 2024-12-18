@@ -18,6 +18,8 @@
     </form>
   </div>
 
+  <div *ngIf="!responseData" style="margin-bottom: 26%;"></div>
+
   <div *ngIf="responseData" class="data">
     <h3>AppSettings:</h3>
     <button class="buttons" (click)="copyToClipboard(getSimulatorData())">
@@ -29,4 +31,9 @@
       <pre>{{ getSimulatorData() | json }}</pre>
     </div>
   </div>
+</div>
+
+<hr />
+<div class="footer">
+  <address>Feel free to reach out to <a href="mailto:abhiram.rajeevan@soti.net">Abhiram Rajeevan</a> if you encounter any issues </address>
 </div>
