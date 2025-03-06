@@ -51,6 +51,28 @@ export class AppComponent {
         MaxIP: '192.168.0.254',
       },
       CommercializationOperator: 'SOTI SIM CARRIER',
+      _comment_sampleThreats: [
+        {
+          Name: 'Virus1',
+          NumberOfDetections: 2,
+          Category: 'Worm',
+          CurrentStatus: 'Removed',
+          Severity: 'High'
+        },
+        {
+          Name: 'Virus2',
+          NumberOfDetections: 10,
+          Category: 'Spyware',
+          CurrentStatus: 'Active',
+          Severity: 'Severe'
+        }
+      ],
+      _comment_ThreatOptions: {
+        __comment1: 'For category choose one of these available modes - (Invalid, Adware, Spyware, PasswordStealer, TrojanDownloader, Worm, Backdoor, RemoteAccessTrojan, Trojan, EmailFlooder, Keylogger, Dialer, MonitoringSoftware, BrowserModifier, Cookie, BrowserPlugin, AOLExploit, Nuker, SecurityDisabler, JokeProgram, HostileActiveXControl, SoftwareBundler, StealthModifier, SettingsModifier, Toolbar, RemoteControlSoftware, TrojanFTP, PotentialUnwantedSoftware, ICQExploit, TrojanTelnet, Exploit, FileSharingProgram, MalwareCreationTool, RemoteControlSoftwareDuplicate, Tool, TrojanDenialOfService, TrojanDropper, TrojanMassMailer, TrojanMonitoringSoftware, TrojanProxyServer, Virus, Known, Unknown, SPP, Behavior, Vulnerability, Policy, EnterpriseUnwantedSoftware, Ransomware, ASRRule)',
+        __comment2: 'For current status choose on of these available modes- (Active, ActionFailed, ManualStepsRequired, FullScanRequired, RebootRequired, RemediatedWithNoncriticalFailures, Quarantined, Removed, Cleaned, Allowed, NoStatusCleared)',
+        __comment3: 'For severity choose one of these available modes - (Unknown, Low, Moderate, High, Severe)'
+      },
+      Threats: [ ],
       Programs: [
         {
           AppId: 'Google Chrome',
