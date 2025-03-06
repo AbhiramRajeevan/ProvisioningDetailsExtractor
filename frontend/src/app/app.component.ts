@@ -65,7 +65,7 @@ export class AppComponent {
           SizeInBytes: 2097152,
         },
       ],
-      AgentVersion: '2025.1.0.0',
+      AgentVersion: '2026.0.0.0',
       TrustedRootCertificatesData: [''],
     },
     EnrollmentConfig: {
