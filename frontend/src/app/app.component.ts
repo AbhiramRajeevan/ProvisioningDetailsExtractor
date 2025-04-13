@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   selectedFile: File | null = null;
   responseData: any = null;
+  obesolateComment: string = "is obsolate since simulator version 1.10.37"
 
   private simulatorData = {
     SimulatorSettings: {
@@ -23,6 +24,7 @@ export class AppComponent {
       StorageRoot: '.',
       HttpClientTimeoutInSeconds: 300,
       HttpClientMaxConcurrentRequestPerServer: 80,
+      CustomDataFile: '.\\CustomData.json'
     },
     DownloadOptions: {
       DownloadAgentInstaller: false,
@@ -31,6 +33,7 @@ export class AppComponent {
         'Choose one of the available modes (Disabled, ProcessWithoutDownload, ProcessWithDownload) in the AppCatalogMode field. Disabled to not support AppCatalog, and others to support with/without download.',
       AppCatalogMode: 'Disabled',
     },
+    __comment_customDataConfig: `CustomDataConfig property ${this.obesolateComment}. Use CustomDataFile property to set the correct custom data json file path`,
     CustomDataConfig: {
       CustomData: {
         Key1: 'Value1',
@@ -50,8 +53,31 @@ export class AppComponent {
         MinIP: '192.168.0.0',
         MaxIP: '192.168.0.254',
       },
+      MemoryConfig: {
+        __commentMemory : "Simulated device memory in MB. One value from the below AvailableMemoryOptions will be randomly chosen as the memory.",
+        AvailableMemoryOptions : [1024, 2048, 4096],
+        FreeMemoryRange : {
+          MinPercentage: 20,
+          MaxPercentage: 80
+        }
+      },
+      DiskConfig: {
+        __commentDisk : 'Simulated device disk space in GB. One value from the below AvailableDiskOptions will be randomly chosen as the disk space.',
+        AvailableDiskOptions : [100, 500, 1000],
+        FreeDiskSpaceRange : {
+          MinPercentage: 20,
+          MaxPercentage: 80
+        }
+      },
+      BatteryConfig: {
+        __commentDisk : 'Remaining Simulator battery percentage. One value from the below RemainingBattery will be randomly chosen as the battery percentage.',
+        RemainingBatteryRange : {
+          MinPercentage: 20,
+          MaxPercentage: 80
+        }
+      },
       CommercializationOperator: 'SOTI SIM CARRIER',
-      _comment_sampleThreats: [
+      __comment_sampleThreats: [
         {
           Name: 'Virus1',
           NumberOfDetections: 2,
@@ -67,7 +93,7 @@ export class AppComponent {
           Severity: 'Severe'
         }
       ],
-      _comment_ThreatOptions: {
+      __comment_ThreatOptions: {
         __comment1: 'For category choose one of these available modes - (Invalid, Adware, Spyware, PasswordStealer, TrojanDownloader, Worm, Backdoor, RemoteAccessTrojan, Trojan, EmailFlooder, Keylogger, Dialer, MonitoringSoftware, BrowserModifier, Cookie, BrowserPlugin, AOLExploit, Nuker, SecurityDisabler, JokeProgram, HostileActiveXControl, SoftwareBundler, StealthModifier, SettingsModifier, Toolbar, RemoteControlSoftware, TrojanFTP, PotentialUnwantedSoftware, ICQExploit, TrojanTelnet, Exploit, FileSharingProgram, MalwareCreationTool, RemoteControlSoftwareDuplicate, Tool, TrojanDenialOfService, TrojanDropper, TrojanMassMailer, TrojanMonitoringSoftware, TrojanProxyServer, Virus, Known, Unknown, SPP, Behavior, Vulnerability, Policy, EnterpriseUnwantedSoftware, Ransomware, ASRRule)',
         __comment2: 'For current status choose on of these available modes- (Active, ActionFailed, ManualStepsRequired, FullScanRequired, RebootRequired, RemediatedWithNoncriticalFailures, Quarantined, Removed, Cleaned, Allowed, NoStatusCleared)',
         __comment3: 'For severity choose one of these available modes - (Unknown, Low, Moderate, High, Severe)'
@@ -87,6 +113,7 @@ export class AppComponent {
           SizeInBytes: 2097152,
         },
       ],
+      __comment_agentVersion: `AgentVersion property ${this.obesolateComment}`,
       AgentVersion: '2026.0.0.0',
       TrustedRootCertificatesData: [''],
     },
