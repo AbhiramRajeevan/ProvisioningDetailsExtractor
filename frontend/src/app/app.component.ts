@@ -53,6 +53,10 @@ export class AppComponent {
         MinIP: '192.168.0.0',
         MaxIP: '192.168.0.254',
       },
+      SSID: 'SOTI Sim SSID',
+      _comment_exchangeIdPrefix: "Update the value at the end with the corresponding simulator box number. For example, when running on the second simulator box, the value should be 'ExchangeId02'.",
+      ExchangeIdPrefix: 'ExchangeId01',
+      PhoneNumberPattern: '405-ddd-dddd',
       MemoryConfig: {
         _commentMemory : "Simulated device memory in MB. One value from the below AvailableMemoryOptions will be randomly chosen as the memory.",
         AvailableMemoryOptions : [1024, 2048, 4096],
@@ -69,6 +73,22 @@ export class AppComponent {
           MaxPercentage: 80
         }
       },
+      ExternalStorageConfig: {
+          _comment_externalStorage: "Simulated device external storage space in GB. One value from the below AvailableExternalStorageOptions will be randomly chosen as the external storage space.",
+          AvailableExternalStorageOptions: [ 100, 250, 500 ],
+          FreeExternalStorageRange: {
+            MinPercentage: 20,
+            MaxPercentage: 80
+          }
+       },
+       SDStorageConfig: {
+          _comment_sdStorage: "Simulated device SD storage space in MB. One value from the below AvailableSDStorageOptions will be randomly chosen as the SD storage space.",
+          AvailableSDStorageOptions: [ 1024, 2048, 4096 ],
+          FreeSDStorageRange: {
+            MinPercentage: 20,
+            MaxPercentage: 80
+          }
+       },
       BatteryConfig: {
         _commentBattery : 'Remaining Simulator battery percentage. One value from the below RemainingBattery will be randomly chosen as the battery percentage.',
         RemainingBatteryRange : {
@@ -115,6 +135,11 @@ export class AppComponent {
       ],
       _comment_agentVersion: `AgentVersion property ${this.obsoleteComment}`,
       AgentVersion: '2026.0.0.0',
+      AzureAccountConfig: {
+          _comment_azureAccountConfig: "Replace null with respective values. Mandatory for Azure Conditional Access.",
+          AzureUserId: null,
+          AzureTenantId: null
+       },
       TrustedRootCertificatesData: [''],
     },
     EnrollmentConfig: {
