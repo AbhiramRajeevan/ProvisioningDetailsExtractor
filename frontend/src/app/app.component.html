@@ -12,8 +12,14 @@
           id="file-input"
         />
       </label>
-      <button style="margin-top: 5%" type="submit" [disabled]="!selectedFile">
-        Upload
+      <label for="version">Simulator Version : </label>
+      <select name="version" [(ngModel)]="selectedOption" (change)="onOptionChange($event)" style="margin-top: 3%;">
+        <option value="less-1.15.0">&lt;1.15.0</option>
+        <option value="gt-eq-1.15.0">&gt;=1.15.0</option>
+      </select>
+      <br>
+      <button style="margin-top: 3%" type="submit" [disabled]="!selectedFile">
+        Submit
       </button>
     </form>
   </div>

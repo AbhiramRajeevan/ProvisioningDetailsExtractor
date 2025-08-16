@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
@@ -11,10 +11,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   selectedFile: File | null = null;
   responseData: any = null;
   obsoleteComment: string = "is obsolete since simulator version 1.10.37"
+
+
+  selectedOption: string = 'less-1.15.0';
+  customData: string = '.\\CustomData.json'
+  ngOnInit(): void {
+    const saved = localStorage.getItem('selectedOption');
+    if (saved) {
+      this.selectedOption = saved;
+    }
+    this.updateCustomData();
+  }
+
+  onOptionChange(event: any) {
+    localStorage.setItem('selectedOption', this.selectedOption);
+    this.updateCustomData();
+  }
+
+  updateCustomData() {
+    if (this.selectedOption == 'less-1.15.0') {
+      this.customData = '.\\CustomData.json'
+    }
+    else {
+      this.customData = '.\\CustomData.ini'
+    }
+    this.simulatorData.SimulatorSettings.CustomDataFile = this.customData;
+  }
 
   private simulatorData = {
     SimulatorSettings: {
@@ -24,7 +50,7 @@ export class AppComponent {
       StorageRoot: '.',
       HttpClientTimeoutInSeconds: 300,
       HttpClientMaxConcurrentRequestPerServer: 80,
-      CustomDataFile: '.\\CustomData.json'
+      CustomDataFile: this.customData
     },
     DownloadOptions: {
       DownloadAgentInstaller: false,
@@ -58,40 +84,40 @@ export class AppComponent {
       ExchangeIdPrefix: 'ExchangeId01',
       PhoneNumberPattern: '405-ddd-dddd',
       MemoryConfig: {
-        _commentMemory : "Simulated device memory in MB. One value from the below AvailableMemoryOptions will be randomly chosen as the memory.",
-        AvailableMemoryOptions : [1024, 2048, 4096],
-        FreeMemoryRange : {
+        _commentMemory: "Simulated device memory in MB. One value from the below AvailableMemoryOptions will be randomly chosen as the memory.",
+        AvailableMemoryOptions: [1024, 2048, 4096],
+        FreeMemoryRange: {
           MinPercentage: 20,
           MaxPercentage: 80
         }
       },
       DiskConfig: {
-        _commentDisk : 'Simulated device disk space in GB. One value from the below AvailableDiskOptions will be randomly chosen as the disk space.',
-        AvailableDiskOptions : [100, 500, 1000],
-        FreeDiskSpaceRange : {
+        _commentDisk: 'Simulated device disk space in GB. One value from the below AvailableDiskOptions will be randomly chosen as the disk space.',
+        AvailableDiskOptions: [100, 500, 1000],
+        FreeDiskSpaceRange: {
           MinPercentage: 20,
           MaxPercentage: 80
         }
       },
       ExternalStorageConfig: {
-          _comment_externalStorage: "Simulated device external storage space in GB. One value from the below AvailableExternalStorageOptions will be randomly chosen as the external storage space.",
-          AvailableExternalStorageOptions: [ 100, 250, 500 ],
-          FreeExternalStorageRange: {
-            MinPercentage: 20,
-            MaxPercentage: 80
-          }
-       },
-       SDStorageConfig: {
-          _comment_sdStorage: "Simulated device SD storage space in MB. One value from the below AvailableSDStorageOptions will be randomly chosen as the SD storage space.",
-          AvailableSDStorageOptions: [ 1024, 2048, 4096 ],
-          FreeSDStorageRange: {
-            MinPercentage: 20,
-            MaxPercentage: 80
-          }
-       },
+        _comment_externalStorage: "Simulated device external storage space in GB. One value from the below AvailableExternalStorageOptions will be randomly chosen as the external storage space.",
+        AvailableExternalStorageOptions: [100, 250, 500],
+        FreeExternalStorageRange: {
+          MinPercentage: 20,
+          MaxPercentage: 80
+        }
+      },
+      SDStorageConfig: {
+        _comment_sdStorage: "Simulated device SD storage space in MB. One value from the below AvailableSDStorageOptions will be randomly chosen as the SD storage space.",
+        AvailableSDStorageOptions: [1024, 2048, 4096],
+        FreeSDStorageRange: {
+          MinPercentage: 20,
+          MaxPercentage: 80
+        }
+      },
       BatteryConfig: {
-        _commentBattery : 'Remaining Simulator battery percentage. One value from the below RemainingBattery will be randomly chosen as the battery percentage.',
-        RemainingBatteryRange : {
+        _commentBattery: 'Remaining Simulator battery percentage. One value from the below RemainingBattery will be randomly chosen as the battery percentage.',
+        RemainingBatteryRange: {
           MinPercentage: 20,
           MaxPercentage: 80
         }
@@ -118,7 +144,7 @@ export class AppComponent {
         _comment_currentStatus: 'For current status choose on of these available modes- (Active, ActionFailed, ManualStepsRequired, FullScanRequired, RebootRequired, RemediatedWithNoncriticalFailures, Quarantined, Removed, Cleaned, Allowed, NoStatusCleared)',
         _comment_severity: 'For severity choose one of these available modes - (Unknown, Low, Moderate, High, Severe)'
       },
-      Threats: [ ],
+      Threats: [],
       Programs: [
         {
           AppId: 'Google Chrome',
@@ -136,10 +162,10 @@ export class AppComponent {
       _comment_agentVersion: `AgentVersion property ${this.obsoleteComment}`,
       AgentVersion: '2026.0.0.0',
       AzureAccountConfig: {
-          _comment_azureAccountConfig: "Replace null with respective values. Mandatory for Azure Conditional Access.",
-          AzureUserId: null,
-          AzureTenantId: null
-       },
+        _comment_azureAccountConfig: "Replace null with respective values. Mandatory for Azure Conditional Access.",
+        AzureUserId: null,
+        AzureTenantId: null
+      },
       TrustedRootCertificatesData: [''],
     },
     EnrollmentConfig: {
@@ -177,7 +203,7 @@ export class AppComponent {
     return this.simulatorData;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   onFileChange(event: any): void {
     const file: File = event.target.files[0];
     if (file && this.isFileTypeValid(file)) {
