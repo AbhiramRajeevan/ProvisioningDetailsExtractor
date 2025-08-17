@@ -11,20 +11,25 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   selectedFile: File | null = null;
   responseData: any = null;
   obsoleteComment: string = "is obsolete since simulator version 1.10.37"
+  isLoaded: boolean = false;
 
 
   selectedOption: string = 'less-1.15.0';
   customData: string = '.\\CustomData.json'
-  ngOnInit(): void {
-    const saved = localStorage.getItem('selectedOption');
-    if (saved) {
-      this.selectedOption = saved;
+
+  constructor(private http: HttpClient) {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('selectedOption');
+      if (saved) {
+        this.selectedOption = saved;
+      }
+      this.updateCustomData();
     }
-    this.updateCustomData();
+    this.isLoaded = true;
   }
 
   onOptionChange(event: any) {
@@ -203,7 +208,6 @@ export class AppComponent implements OnInit {
     return this.simulatorData;
   }
 
-  constructor(private http: HttpClient) { }
   onFileChange(event: any): void {
     const file: File = event.target.files[0];
     if (file && this.isFileTypeValid(file)) {
